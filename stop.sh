@@ -10,7 +10,7 @@ mvn spring-boot:stop
 cd ../unsubscribe
 mvn spring-boot:stop
 
-cd ../self_menu
+cd ../self_mene
 mvn spring-boot:stop
 
 cd ../library
