@@ -9,7 +9,7 @@ mvn spring-boot:start
 cd ..\unsubscribe
 mvn spring-boot:start
 
-cd ..\self_mene
+cd ..\self_menu
 mvn spring-boot:start
 
 cd ..\library
