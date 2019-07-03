@@ -17,13 +17,10 @@ public class SelfMenuController {
 
 	@Autowired
 	private SelfMenuService selfMenuService;
-//
-	// 显示一个菜单修改的页面
+
 	@GetMapping
 	public ModelAndView index() {
-		// 使用JSP必须修改pom.xml文件，增加JSP解析器的依赖，默认不支持JSP。
-		// JSP在加入依赖以后，需要把文件放在/src/main/resources/META-INF/resources目录下才有效！
-		// /META-INF/resources是Java EE的规范，每个不同模块的JSP文件放入此目录，可以当做是普通WEB应用的WebContent文件夹。
+
 		return new ModelAndView("/WEB-INF/views/menu/index.jsp");
 	}
 

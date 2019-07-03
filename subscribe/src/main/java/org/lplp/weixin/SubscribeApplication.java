@@ -21,11 +21,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @ComponentScan("org.lplp")
 @EnableJpaRepositories("org.lplp")
 @EntityScan("org.lplp")
-public class SubscribeApplication implements //
-		EventListenerConfig, //
-		// 得到Spring的容器
+public class SubscribeApplication implements 
+		EventListenerConfig, 
 		ApplicationContextAware {
-	private ApplicationContext ctx;// Spring容器
+	private ApplicationContext ctx;
 
 	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
@@ -35,13 +34,9 @@ public class SubscribeApplication implements //
 	private static final Logger LOG = LoggerFactory.getLogger(SubscribeApplication.class);
 
 	public void handle(EventInMessage msg) {
-		// 1.当前类实现ApplicationContextAware接口，用于获得Spring容器
-		// 2.把Event全部转换为小写，并且拼接上MessageProcessor作为ID
 		String id = msg.getEvent().toLowerCase() + "MessageProcessor";
-		// 3.使用ID到Spring容器获取一个Bean
 		try {
 			EventMessageProcessor mp = (EventMessageProcessor) ctx.getBean(id);
-			// 4.强制类型转换以后，调用onMessage方法
 			if (mp != null) {
 				mp.onMessage(msg);
 			} else {
@@ -61,7 +56,6 @@ public class SubscribeApplication implements //
 	public static void main(String[] args) throws InterruptedException {
 		SpringApplication.run(SubscribeApplication.class, args);
 //		System.out.println("Spring Boot应用启动成功");
-		// 让程序进入等待、不要退出
 //		CountDownLatch countDownLatch = new CountDownLatch(1);
 //		countDownLatch.await();
 	}
